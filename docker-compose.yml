@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/rails
+      - gem_cache:/usr/local/bundle
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      STORE_NAME: ${STORE_NAME:-radika}
+      DATABASE_HOST: db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: realize_ec_${STORE_NAME:-radika}_development
+    env_file:
+      - .env.${STORE_NAME:-radika}
+
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data_${STORE_NAME:-radika}:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: realize_ec_${STORE_NAME:-radika}_development
+    ports:
+      - "${DB_PORT:-5432}:5432"
+
+volumes:
+  postgres_data_radika:
+  postgres_data_shrimpshells:
+  postgres_data_khukh_khuleg:
+  gem_cache:
