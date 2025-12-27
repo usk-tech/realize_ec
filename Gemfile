@@ -1,6 +1,10 @@
 source "https://rubygems.org"
 
+# Ruby version
+ruby "3.3.6"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Note: Rails 8.1 is NOT compatible with Solidus 4.6.2, keep Rails 8.0.x
 gem "rails", "~> 8.0.0"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
@@ -42,43 +46,33 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
 
-# Solidus E-commerce (最新版を使用)
-gem "solidus"
+# Solidus E-commerce platform
+# Note: Solidus 4.6.2 is compatible with Rails 8.0.x (NOT 8.1+)
+gem "solidus", "~> 4.6.2"
 gem "solidus_auth_devise"
 
-# Stripe payment
+# Stripe payment integration
 gem "stripe"
+
+# Additional Solidus dependencies
+gem "responders"
+gem "solidus_support", ">= 0.12.0"
+gem "view_component", "~> 3.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
-  gem "bundler-audit", require: false
-
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
+  # Audits gems for known security defects
+  gem "bundler-audit", require: false
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-end
 
-group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
-end
-gem "responders"
-gem "solidus_support", ">= 0.12.0"
-gem "view_component", "~> 3.0"
-
-group :test do
-  gem "capybara"
-  gem "selenium-webdriver"
-  gem "capybara-screenshot", "~> 1.0"
-  gem "database_cleaner", "~> 2.0"
-end
-
-group :development, :test do
+  # RSpec for testing
   gem "rspec-rails"
   gem "rails-controller-testing", "~> 1.0.5"
   gem "rspec-activemodel-mocks", "~> 1.1.0"
@@ -89,4 +83,16 @@ group :development, :test do
   gem "rubocop-performance", "~> 1.5"
   gem "rubocop-rails", "~> 2.3"
   gem "rubocop-rspec", "~> 2.0"
+end
+
+group :development do
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
+end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "capybara-screenshot", "~> 1.0"
+  gem "database_cleaner", "~> 2.0"
 end
