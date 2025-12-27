@@ -57,7 +57,7 @@ gem "stripe"
 # Additional Solidus dependencies
 gem "responders"
 gem "solidus_support", ">= 0.12.0"
-gem "view_component", "~> 3.0"
+gem "view_component", "~> 4.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
