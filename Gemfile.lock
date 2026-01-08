@@ -264,7 +264,7 @@ GEM
     mime-types-data (3.2025.0924)
     mini_magick (4.13.2)
     mini_mime (1.1.5)
-    minitest (6.0.0)
+    minitest (6.0.1)
       prism (~> 1.5)
     monetize (1.13.0)
       money (~> 6.12)
@@ -424,9 +424,9 @@ GEM
       rubocop-ast (>= 1.48.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.48.0)
+    rubocop-ast (1.49.0)
       parser (>= 3.3.7.2)
-      prism (~> 1.4)
+      prism (~> 1.7)
     rubocop-capybara (2.22.1)
       lint_roller (~> 1.1)
       rubocop (~> 1.72, >= 1.72.1)
@@ -437,7 +437,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.47.1, < 2.0)
-    rubocop-rails (2.34.2)
+    rubocop-rails (2.34.3)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -669,7 +669,7 @@ DEPENDENCIES
   rspec-rails
   rubocop (~> 1.0)
   rubocop-performance (~> 1.5)
-  rubocop-rails (~> 2.3)
+  rubocop-rails (~> 2.34)
   rubocop-rails-omakase
   rubocop-rspec (~> 2.0)
   selenium-webdriver
